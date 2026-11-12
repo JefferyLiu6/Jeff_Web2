@@ -23,7 +23,7 @@ export function WorkList({ items, areas }: { items: WorkItem[]; areas: readonly 
 
   return (
     <>
-      <div role="group" aria-label="Filter work by area" className="flex flex-wrap gap-2.5 pb-6">
+      <div role="group" aria-label="Filter work by area" className="flex flex-wrap gap-3 pb-6">
         {["All", ...used].map((a) => {
           const active = a === area;
           return (
@@ -32,7 +32,7 @@ export function WorkList({ items, areas }: { items: WorkItem[]; areas: readonly 
               type="button"
               aria-pressed={active}
               onClick={() => setArea(a)}
-              className={`min-h-11 cursor-pointer rounded-full border px-5 text-meta font-medium transition-opacity duration-150 hover:opacity-85 active:opacity-70 ${
+              className={`min-h-11 cursor-pointer rounded-full border px-5 text-meta font-medium transition-[opacity,scale] duration-150 ease-out hover:opacity-85 active:scale-[0.96] motion-reduce:active:scale-100 ${
                 active ? "border-ink bg-ink text-white" : "border-[#8a9099] bg-white text-ink"
               }`}
             >
@@ -42,7 +42,11 @@ export function WorkList({ items, areas }: { items: WorkItem[]; areas: readonly 
         })}
       </div>
 
-      <div className="mb-20 border-t-2 border-ink" aria-live="polite">
+      <p className="sr-only" aria-live="polite">
+        {shown.length === 1 ? "1 project shown" : `${shown.length} projects shown`}
+      </p>
+
+      <div className="mb-20 border-t-2 border-ink">
         {shown.map((p) => (
           <article key={p.slug} className="flex flex-wrap items-baseline gap-x-8 gap-y-2 border-b border-rule py-8">
             <div className="flex flex-[0_0_130px] flex-col gap-0.5 text-meta text-muted">
@@ -50,23 +54,23 @@ export function WorkList({ items, areas }: { items: WorkItem[]; areas: readonly 
               <span>{p.area}</span>
             </div>
             <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-2">
-              <h2 className="font-serif text-[2rem] font-medium leading-[1.1] tracking-[-0.01em]">{p.title}</h2>
+              <h2 className="font-serif text-title font-medium leading-[1.1] text-balance tracking-[-0.01em]">{p.title}</h2>
               <p className="text-body text-body-colour">{p.summary}</p>
               <p className="text-meta font-medium">{p.result}</p>
             </div>
-            <div className="flex flex-none flex-wrap gap-x-5 text-meta">
+            <div className="flex flex-none flex-wrap gap-x-6 text-meta">
               {p.hasCaseStudy && (
-                <Link href={`/work/${p.slug}`} className="link">
+                <Link href={`/work/${p.slug}`} className="link" aria-label={`Case study: ${p.title}`}>
                   Case study
                 </Link>
               )}
               {p.demo && (
-                <a href={p.demo} className="link">
+                <a href={p.demo} className="link" aria-label={`Demo of ${p.title}`}>
                   Demo
                 </a>
               )}
               {p.code && (
-                <a href={p.code} className="link">
+                <a href={p.code} className="link" aria-label={`Code for ${p.title}`}>
                   Code
                 </a>
               )}

@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-
-const links = [
-  { href: "/work", label: "Work" },
-  { href: "/how-i-work", label: "How I work" },
-  { href: "/#background", label: "Background" },
-  { href: "/#contact", label: "Contact" },
-];
+import { NavLinks } from "./NavLinks";
 
 export function Masthead() {
   return (
@@ -23,13 +17,9 @@ export function Masthead() {
       </div>
       <nav
         aria-label="Main"
-        className="flex flex-wrap gap-x-5 gap-y-1 border-b border-t border-b-rule border-t-ink text-meta font-medium"
+        className="flex flex-wrap gap-x-6 gap-y-1 border-b border-t border-b-rule border-t-ink text-meta font-medium"
       >
-        {links.map((l) => (
-          <Link key={l.href} href={l.href} className="py-3 no-underline">
-            {l.label}
-          </Link>
-        ))}
+        <NavLinks />
       </nav>
     </header>
   );

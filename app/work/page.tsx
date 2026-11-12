@@ -25,8 +25,8 @@ export default function WorkPage() {
   return (
     <div className="container-page">
       <header className="flex flex-col gap-5 pb-10 pt-14">
-        <h1 className="display text-[clamp(2.75rem,7vw,5.5rem)]">All work</h1>
-        <p className="max-w-[680px] font-serif text-lede leading-[1.35]">
+        <h1 className="display text-display-lg">All work</h1>
+        <p className="max-w-[680px] text-pretty font-serif text-lede leading-[1.35]">
           Everything I&rsquo;ve built, most recent first, each with the one result I&rsquo;d stand behind.
         </p>
       </header>
