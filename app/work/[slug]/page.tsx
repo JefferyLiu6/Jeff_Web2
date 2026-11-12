@@ -11,6 +11,9 @@ export function generateStaticParams() {
     .map((p) => ({ slug: p.slug }));
 }
 
+// Only the case studies that exist are served; anything else is a real 404.
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const p = getProject(slug);

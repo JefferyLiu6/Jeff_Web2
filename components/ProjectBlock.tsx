@@ -23,16 +23,22 @@ export function ProjectBlock({ project, index, last }: { project: Project; index
         <ProjectLinks project={p} long />
       </div>
       {p.image && (
-        <figure className="min-w-0 flex-[1.7_1_460px] self-start overflow-hidden rounded border border-rule-strong bg-tint">
-          <Image
-            src={p.image.src}
-            alt={p.image.alt}
-            width={p.image.width}
-            height={p.image.height}
-            sizes="(min-width: 1000px) 660px, 100vw"
-            className="block h-auto w-full"
-            priority={index === 0}
-          />
+        <figure className="flex min-w-0 flex-[1.7_1_460px] flex-col gap-3 self-start">
+          {/* Every screenshot gets the same 3:2 mat and inset, so different apps look like one set. */}
+          <div className="relative aspect-[3/2] rounded bg-tint">
+            <div className="absolute inset-x-[4.5%] inset-y-[4.5%] overflow-hidden rounded-md border border-rule-strong bg-white shadow-[0_8px_24px_rgba(22,24,29,0.10)]">
+              <Image
+                src={p.image.src}
+                alt={p.image.alt}
+                fill
+                sizes="(min-width: 1000px) 620px, 100vw"
+                quality={90}
+                className="object-cover object-top"
+                priority={index === 0}
+              />
+            </div>
+          </div>
+          {p.image.caption && <figcaption className="text-meta text-muted">{p.image.caption}</figcaption>}
         </figure>
       )}
       {!p.image && p.steps && (

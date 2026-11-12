@@ -22,34 +22,37 @@
   --text-stat: 2.375rem; /* 38px */
 }
 
-html {
-  scroll-behavior: smooth;
-}
-@media (prefers-reduced-motion: reduce) {
+/* Element defaults live in the base layer so utility classes (text-white on a button) win. */
+@layer base {
   html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
   }
-}
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 
-body {
-  background: #fff;
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-}
+  body {
+    background: #fff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
 
-a {
-  color: inherit;
-  text-underline-offset: 3px;
-}
-a:hover {
-  color: var(--color-accent);
-}
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 3px;
-  border-radius: 2px;
+  a {
+    color: inherit;
+    text-underline-offset: 3px;
+  }
+  a:hover {
+    color: var(--color-accent);
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
 @layer components {
