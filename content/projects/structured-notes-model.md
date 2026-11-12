@@ -18,4 +18,9 @@ steps:
   - 600 example notes, split so test prompts are never seen in training.
   - A small open model is fine-tuned on them.
   - A format checker scores every output automatically.
+image:
+  src: /projects/structured-notes-before-after.png
+  alt: The same prompt answered twice. The base model's note breaks the format with four bullets and an empty limitation. The fine-tuned model's note has every section in the required form.
+  width: 1168
+  height: 610
 ---

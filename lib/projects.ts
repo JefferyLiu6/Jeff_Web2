@@ -30,6 +30,10 @@ const schema = z.object({
   detail: z.string().optional(),
   stat: stat.optional(),
   steps: z.array(z.string()).length(3).optional(),
+  /** A real screenshot in /public. Shown on the home page instead of the steps. */
+  image: z
+    .object({ src: z.string().startsWith("/"), alt: z.string().min(20), width: z.number(), height: z.number() })
+    .optional(),
 
   /** Case study header. Only used when the file has body text. */
   kicker: z.string().optional(),
@@ -64,8 +68,11 @@ export function getProjects(): Project[] {
     }
     const body = content.trim();
     const p = parsed.data;
-    if (p.featured && !(p.detail && p.stat && p.steps)) {
-      throw new Error(`content/projects/${file} is featured, so it needs detail, stat and steps.`);
+    if (p.image && !fs.existsSync(path.join(process.cwd(), "public", p.image.src))) {
+      throw new Error(`content/projects/${file}: image ${p.image.src} is not in /public.`);
+    }
+    if (p.featured && !(p.detail && p.stat && (p.image || p.steps))) {
+      throw new Error(`content/projects/${file} is featured, so it needs detail, stat, and an image or steps.`);
     }
     return { ...p, slug, body, hasCaseStudy: body.length > 0 };
   });
