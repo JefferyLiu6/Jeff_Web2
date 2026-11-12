@@ -33,6 +33,10 @@ That is enough for it to appear on the All work page.
 - **Give it a case study page:** write Markdown below the header. Optional header fields `kicker`, `lede`, `meta`, `stats`, `statsNote` and `limits` fill the case study layout. See `kairo.md`.
 - **No public code:** set `private: true`.
 
+## Edit the How I work page
+
+The seven practices on `/how-i-work` are in `lib/method.ts`: each has a rule, a why, the steps, an example from a project and a question. Add, remove or reword entries there; the page and its index update themselves.
+
 ## Edit the rest
 
 Everything about you (headline, facts, background, publications, contact cards) is in `lib/site.ts`.

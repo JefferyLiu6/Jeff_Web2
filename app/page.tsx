@@ -80,9 +80,14 @@ export default function Home() {
       </section>
 
       <section id="how" aria-labelledby="how-h" className="container-page scroll-mt-6 pb-18 pt-24">
-        <h2 id="how-h" className="display mb-10 text-[clamp(2rem,4.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
-          How I work
-        </h2>
+        <div className="mb-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <h2 id="how-h" className="display text-[clamp(2rem,4.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
+            How I work
+          </h2>
+          <Link href="/how-i-work" className="link text-meta">
+            Read the full method
+          </Link>
+        </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-10">
           {site.principles.map((p) => (
             <div key={p.title} className="flex flex-col gap-2.5 border-t-2 border-ink pt-4">
