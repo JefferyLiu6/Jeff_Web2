@@ -30,6 +30,7 @@ demo: https://example.com                 # optional
 That is enough for it to appear on the All work page.
 
 - **Feature it on the home page:** add `featured: 1` (or 2, 3) plus `detail`, `stat` and three `steps`. See `kairo.md`. Only three projects can be featured, so give the old one's number to the new one.
+- **Show a screenshot on the home page:** put the image in `public/projects/` and add an `image` block with `src`, `alt`, `width` and `height`. It replaces the three steps. Describe what the picture shows in `alt`.
 - **Give it a case study page:** write Markdown below the header. Optional header fields `kicker`, `lede`, `meta`, `stats`, `statsNote` and `limits` fill the case study layout. See `kairo.md`.
 - **No public code:** set `private: true`.
 
@@ -47,7 +48,6 @@ Empty values are hidden, so the site never shows a dead link. Still to fill in:
 - [ ] `resumeHref`: add `public/resume.pdf`, then set to `"/resume.pdf"`
 - [ ] `portraitSrc`: add `public/portrait.jpg`, then set to `"/portrait.jpg"`
 - [ ] `available`: your start date
-- [ ] `demo` in `content/projects/kairo.md`: the live demo address
 
 ## Design tokens
 

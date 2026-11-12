@@ -6,7 +6,6 @@ date: 2026-11
 summary: An AI assistant for tasks and calendars that asks before it changes anything.
 result: 252 of 252 evaluation cases passed across 11 test suites in the recorded run.
 code: https://github.com/JefferyLiu6/Kairo
-# demo: add the live demo address here to show a "Try the demo" link
 
 featured: 1
 detail: The language model only interprets the request. Separate code checks it, decides whether a person must approve it, and records every step, so each part can be tested on its own.
@@ -35,6 +34,12 @@ limits:
   - The evaluation is offline and deterministic. It does not measure behaviour with real users.
   - Duplicate execution was prevented in the scenarios I tested, not proven impossible.
   - The public app is a demo. It has not been run as a production service.
+demo: https://kairo-hazel.vercel.app
+image:
+  src: /projects/kairo-approval.png
+  alt: Kairo chat. The user asks to delete a calendar block, and Kairo shows an "Action required" card with Approve and Reject buttons instead of deleting it.
+  width: 680
+  height: 484
 ---
 
 ## In short
@@ -54,6 +59,8 @@ I rebuilt it so that each stage can do one thing and nothing else.
 3. **A policy decides on approval.** Risky actions wait for a person. The policy lives outside the model, as an explicit list.
 4. **Storage makes the change.** An approval is claimed once before it runs. Automatic retries are limited to read-only actions.
 5. **An audit log records it.** Every classification, action, approval, rejection and failure is written down.
+
+![Kairo's decision trace for a delete request: the extracted action, the approval policy's reason, and what was read and written.](/projects/kairo-decision-trace.png)
 
 ## A failure my tests caught
 

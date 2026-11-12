@@ -67,6 +67,16 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
               ul: (props) => <ul className="flex list-disc flex-col gap-2 pl-5 text-body text-body-colour" {...props} />,
               strong: (props) => <strong className="font-semibold text-ink" {...props} />,
               a: (props) => <a className="underline" {...props} />,
+              img: ({ src, alt }) => (
+                // Screenshots inside a case study. Plain img keeps Markdown simple.
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={typeof src === "string" ? src : undefined}
+                  alt={alt ?? ""}
+                  loading="lazy"
+                  className="mt-2 block h-auto w-full rounded border border-rule-strong"
+                />
+              ),
             }}
           >
             {p.body}
