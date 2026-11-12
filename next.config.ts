@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // A fully static site: every page is built ahead of time.
   turbopack: {
     rules: {
       "*.css": {

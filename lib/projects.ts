@@ -32,7 +32,13 @@ const schema = z.object({
   steps: z.array(z.string()).length(3).optional(),
   /** A real screenshot in /public. Shown on the home page instead of the steps. */
   image: z
-    .object({ src: z.string().startsWith("/"), alt: z.string().min(20), width: z.number(), height: z.number() })
+    .object({
+      src: z.string().startsWith("/"),
+      alt: z.string().min(20),
+      caption: z.string().optional(),
+      width: z.number(),
+      height: z.number(),
+    })
     .optional(),
 
   /** Case study header. Only used when the file has body text. */

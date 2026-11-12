@@ -36,10 +36,11 @@ limits:
   - The public app is a demo. It has not been run as a production service.
 demo: https://kairo-hazel.vercel.app
 image:
-  src: /projects/kairo-approval.png
+  src: /projects/kairo-approval-gate.png
   alt: Kairo chat. The user asks to delete a calendar block, and Kairo shows an "Action required" card with Approve and Reject buttons instead of deleting it.
-  width: 680
-  height: 484
+  caption: Kairo asks for approval before deleting a calendar block.
+  width: 1200
+  height: 800
 ---
 
 ## In short

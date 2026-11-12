@@ -49,6 +49,17 @@ Empty values are hidden, so the site never shows a dead link. Still to fill in:
 - [ ] `portraitSrc`: add `public/portrait.jpg`, then set to `"/portrait.jpg"`
 - [ ] `available`: your start date
 
+## Retake the screenshots
+
+The three featured screenshots can be retaken from the live demos at double resolution, all at the same window size:
+
+```bash
+npx playwright install chromium   # first time only
+npm run screenshots               # or: npm run screenshots -- kairo
+```
+
+Each image is saved to `public/projects/` at 2400 x 1600. The home page shows every screenshot in the same 3:2 frame, so keep new images at that shape.
+
 ## Design tokens
 
 Colours, fonts and the six-step type scale are defined once in `app/globals.css` under `@theme`.

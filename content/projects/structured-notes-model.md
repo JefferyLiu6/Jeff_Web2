@@ -19,8 +19,9 @@ steps:
   - A small open model is fine-tuned on them.
   - A format checker scores every output automatically.
 image:
-  src: /projects/structured-notes-before-after.png
-  alt: The same prompt answered twice. The base model's note breaks the format with four bullets and an empty limitation. The fine-tuned model's note has every section in the required form.
-  width: 1168
-  height: 610
+  src: /projects/structured-notes-results.png
+  alt: Results summary for the Structured Notes Model. 600 examples, 125 held-out test prompts, and format compliance of 38% for the base model, 99% after LoRA tuning and 100% after preference tuning.
+  caption: Format compliance before and after fine-tuning, on 125 held-out prompts.
+  width: 1200
+  height: 800
 ---

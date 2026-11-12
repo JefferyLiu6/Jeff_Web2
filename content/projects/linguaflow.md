@@ -19,8 +19,9 @@ steps:
   - The tutor finds course notes that might explain it.
   - A second check confirms the notes support the answer before they are cited.
 image:
-  src: /projects/linguaflow-study.png
+  src: /projects/linguaflow-study-helper.png
   alt: LinguaFlow study screen. A learner asks why a passive sentence uses "was reviewed", and the tutor answers with a study reference shown beneath.
-  width: 800
-  height: 740
+  caption: LinguaFlow answers a learner and shows the note it relied on.
+  width: 1200
+  height: 800
 ---
