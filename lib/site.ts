@@ -75,6 +75,8 @@ export const site = {
     recruiter: {
       title: "If you’re a recruiter",
       text: "Everything you need for a first screen is in the one-page resume.",
+      // Shown while resumeHref is empty, so the card never points at a missing file.
+      textWithoutResume: "LinkedIn is the best way to reach me for now. My resume is available on request.",
     },
     collaborate: {
       title: "If you’d like to collaborate",

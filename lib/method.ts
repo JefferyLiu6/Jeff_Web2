@@ -142,7 +142,7 @@ export const method = {
         project: "LinguaFlow",
         text: "The verification step that removed false references also accounts for about 98% of the token cost per request, with a typical worst-case response time of 4.6 seconds in local testing. Both are published next to the accuracy result. The demo has no real users yet, and the write-up says that too.",
       },
-      ask: "What would a sceptical reader ask next, and have I already answered it on the page?",
+      ask: "What would a skeptical reader ask next, and have I already answered it on the page?",
     },
   ] satisfies Practice[],
 };

@@ -14,8 +14,8 @@ export default function HowIWork() {
     <div className="container-page">
       <header className="flex flex-col gap-6 pb-12 pt-14">
         <p className="label text-accent">Method</p>
-        <h1 className="display text-[clamp(2.75rem,7vw,5.5rem)]">How I work</h1>
-        <p className="max-w-[720px] font-serif text-lede leading-[1.35]">{method.lede}</p>
+        <h1 className="display text-display-lg">How I work</h1>
+        <p className="max-w-[720px] text-pretty font-serif text-lede leading-[1.35]">{method.lede}</p>
       </header>
 
       <nav aria-label="On this page" className="border-b border-t-2 border-b-rule border-t-ink py-6">
@@ -33,7 +33,7 @@ export default function HowIWork() {
       </nav>
 
       <section aria-labelledby="loop-h" className="py-16">
-        <h2 id="loop-h" className="display mb-8 text-[clamp(2rem,4.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
+        <h2 id="loop-h" className="display mb-8 text-display-sm tracking-[-0.02em]">
           The order I work in
         </h2>
         <ol className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,170px),1fr))] gap-x-8 gap-y-8">
@@ -56,11 +56,11 @@ export default function HowIWork() {
         >
           <div className="flex items-baseline gap-5">
             <span className="font-serif text-lede text-accent">{num(i)}</span>
-            <h2 id={`${p.id}-h`} className="display text-[clamp(2rem,4.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
+            <h2 id={`${p.id}-h`} className="display text-display-sm tracking-[-0.02em]">
               {p.title}
             </h2>
           </div>
-          <p className="mt-5 max-w-[760px] font-serif text-lede leading-[1.3]">{p.rule}</p>
+          <p className="mt-5 max-w-[760px] text-pretty font-serif text-lede leading-[1.3]">{p.rule}</p>
 
           <div className="mt-10 flex flex-wrap gap-x-14 gap-y-10">
             <div className="flex min-w-0 flex-[1.2_1_400px] flex-col gap-8">

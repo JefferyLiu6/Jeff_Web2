@@ -11,9 +11,9 @@ export function ProjectBlock({ project, index, last }: { project: Project; index
       <div className="flex min-w-0 flex-[1_1_340px] flex-col gap-4">
         <div className="flex items-baseline gap-5">
           <span className="font-serif text-lede text-accent">{String(index + 1).padStart(2, "0")}</span>
-          <h3 className="display text-[clamp(2.25rem,5vw,3.5rem)] tracking-[-0.02em]">{p.title}</h3>
+          <h3 className="display text-display-md tracking-[-0.02em]">{p.title}</h3>
         </div>
-        <p className="font-serif text-lede leading-[1.3]">{p.summary}</p>
+        <p className="text-pretty font-serif text-lede leading-[1.3]">{p.summary}</p>
         <p className="max-w-[60ch] text-body text-body-colour">{p.detail}</p>
         {p.stat && (
           <div className="max-w-[420px]">
@@ -26,7 +26,7 @@ export function ProjectBlock({ project, index, last }: { project: Project; index
         <figure className="flex min-w-0 flex-[1.7_1_460px] flex-col gap-3 self-start">
           {/* Every screenshot gets the same 3:2 mat and inset, so different apps look like one set. */}
           <div className="relative aspect-[3/2] rounded bg-tint">
-            <div className="absolute inset-x-[4.5%] inset-y-[4.5%] overflow-hidden rounded-md border border-rule-strong bg-white shadow-[0_8px_24px_rgba(22,24,29,0.10)]">
+            <div className="absolute inset-x-[4.5%] inset-y-[4.5%] overflow-hidden rounded bg-white shadow-[0_8px_24px_rgba(22,24,29,0.10)] outline outline-1 -outline-offset-1 outline-black/10">
               <Image
                 src={p.image.src}
                 alt={p.image.alt}

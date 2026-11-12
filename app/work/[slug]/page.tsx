@@ -29,8 +29,8 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
     <article className="container-page">
       <header className="flex flex-col gap-6 pb-10 pt-16">
         {p.kicker && <p className="label text-accent">{p.kicker}</p>}
-        <h1 className="display text-[clamp(3rem,9vw,7rem)]">{p.title}</h1>
-        <p className="max-w-[760px] font-serif text-[clamp(1.375rem,2.6vw,1.875rem)] leading-[1.3]">
+        <h1 className="display text-display-xl">{p.title}</h1>
+        <p className="max-w-[760px] font-serif text-lede-lg text-pretty">
           {p.lede ?? p.summary}
         </p>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-body">
@@ -66,8 +66,8 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
                 <h2 className="mt-11 font-serif text-stat font-medium leading-[1.1] tracking-[-0.02em] first:mt-0" {...props} />
               ),
               p: (props) => <p className="text-body text-body-colour" {...props} />,
-              ol: (props) => <ol className="flex list-decimal flex-col gap-3 pl-6 text-body text-body-colour marker:font-serif marker:text-accent" {...props} />,
-              ul: (props) => <ul className="flex list-disc flex-col gap-2 pl-5 text-body text-body-colour" {...props} />,
+              ol: (props) => <ol className="flex list-decimal flex-col gap-3 ps-6 text-body text-body-colour marker:font-serif marker:text-accent" {...props} />,
+              ul: (props) => <ul className="flex list-disc flex-col gap-2 ps-5 text-body text-body-colour" {...props} />,
               strong: (props) => <strong className="font-semibold text-ink" {...props} />,
               a: (props) => <a className="underline" {...props} />,
               img: ({ src, alt }) => (
@@ -77,7 +77,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
                   src={typeof src === "string" ? src : undefined}
                   alt={alt ?? ""}
                   loading="lazy"
-                  className="mt-2 block h-auto w-full rounded border border-rule-strong"
+                  className="mt-2 block h-auto w-full rounded outline outline-1 -outline-offset-1 outline-black/10"
                 />
               ),
             }}
@@ -105,7 +105,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
             <h2 id="limits-h" className="font-serif text-lede font-medium leading-[1.15]">
               What this does not prove
             </h2>
-            <ul className="flex list-disc flex-col gap-2 pl-5 text-body text-body-colour">
+            <ul className="flex list-disc flex-col gap-2 ps-5 text-body text-body-colour">
               {p.limits.map((l) => (
                 <li key={l}>{l}</li>
               ))}

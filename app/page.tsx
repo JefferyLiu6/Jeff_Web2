@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <section className="container-page flex flex-col gap-12 pb-18 pt-16">
-        <h1 className="display max-w-[1000px] text-[clamp(2.75rem,8vw,6.5rem)]">
+        <h1 className="display max-w-[1000px] text-display-xl">
           {site.headline.before}
           <em className="text-accent">{site.headline.emphasis}</em>
           {site.headline.after}
@@ -38,7 +38,7 @@ export default function Home() {
                   priority
                 />
               )}
-              <p className="min-w-0 flex-[1_1_260px] font-serif text-lede leading-[1.35]">{site.intro}</p>
+              <p className="min-w-0 flex-[1_1_260px] text-pretty font-serif text-lede leading-[1.35]">{site.intro}</p>
             </div>
             <p className="max-w-[62ch] text-body text-body-colour">{site.introMore}</p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-body">
@@ -72,7 +72,7 @@ export default function Home() {
 
       <section aria-label="A principle I work by" className="bg-accent text-white">
         <div className="container-page flex flex-col gap-6 py-24">
-          <p className="display max-w-[940px] text-[clamp(1.875rem,4.6vw,3.5rem)] leading-[1.12] tracking-[-0.02em]">
+          <p className="display max-w-[940px] text-display-md tracking-[-0.02em]">
             {site.quote.text}
           </p>
           <p className="max-w-[56ch] text-body">{site.quote.note}</p>
@@ -81,7 +81,7 @@ export default function Home() {
 
       <section id="how" aria-labelledby="how-h" className="container-page scroll-mt-6 pb-18 pt-24">
         <div className="mb-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-          <h2 id="how-h" className="display text-[clamp(2rem,4.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
+          <h2 id="how-h" className="display text-display-sm tracking-[-0.02em]">
             How I work
           </h2>
           <Link href="/how-i-work" className="link text-meta">
@@ -100,7 +100,7 @@ export default function Home() {
 
       <section id="background" aria-labelledby="bg-h" className="scroll-mt-6 bg-tint">
         <div className="container-page py-20">
-          <h2 id="bg-h" className="display mb-7 text-[clamp(2rem,4.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
+          <h2 id="bg-h" className="display mb-7 text-display-sm tracking-[-0.02em]">
             Background
           </h2>
           <ul className="border-b border-rule-strong">
@@ -135,7 +135,7 @@ export default function Home() {
                   {p.title} <span className="text-muted">{p.venue}</span>{" "}
                   {p.doi && (
                     <a href={p.doi} className="underline">
-                      DOI
+                      Read the paper (DOI)
                     </a>
                   )}
                 </p>
@@ -146,13 +146,13 @@ export default function Home() {
       </section>
 
       <section id="contact" aria-labelledby="ct-h" className="container-page scroll-mt-6 pb-6 pt-24">
-        <h2 id="ct-h" className="display mb-10 text-[clamp(2.25rem,6vw,4.5rem)]">
+        <h2 id="ct-h" className="display mb-10 text-display-lg">
           Let&rsquo;s talk.
         </h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-8">
           <div className="flex flex-col gap-3.5 rounded border border-ink p-8">
             <h3 className="font-serif text-lede font-medium">{site.contact.recruiter.title}</h3>
-            <p className="text-body text-body-colour">{site.contact.recruiter.text}</p>
+            <p className="text-body text-body-colour">{site.resumeHref ? site.contact.recruiter.text : site.contact.recruiter.textWithoutResume}</p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-body">
               {site.resumeHref && (
                 <a href={site.resumeHref} className="btn-ink">
