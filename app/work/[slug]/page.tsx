@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import { getProject, getProjects } from "@/lib/projects";
+import Image from "next/image";
 import { Stat } from "@/components/Stat";
+import { Flow } from "@/components/Flow";
 
 export function generateStaticParams() {
   return getProjects()
@@ -56,6 +58,34 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
             </div>
           ))}
         </dl>
+      )}
+
+      {(p.image || p.flow) && (
+        <div className="flex flex-col gap-10 pt-12">
+          {p.image && (
+            <figure className="flex max-w-[900px] flex-col gap-3">
+              <Image
+                src={p.image.src}
+                alt={p.image.alt}
+                width={p.image.width}
+                height={p.image.height}
+                sizes="(min-width: 960px) 900px, 100vw"
+                quality={90}
+                priority
+                className="block h-auto w-full rounded outline outline-1 -outline-offset-1 outline-black/10"
+              />
+              {p.image.caption && <figcaption className="text-meta text-muted">{p.image.caption}</figcaption>}
+            </figure>
+          )}
+          {p.flow && (
+            <section aria-labelledby="flow-h" className="flex flex-col gap-4">
+              <h2 id="flow-h" className="label text-ink">
+                How it fits together
+              </h2>
+              <Flow steps={p.flow} />
+            </section>
+          )}
+        </div>
       )}
 
       <div className="flex max-w-[640px] flex-col gap-16 pb-18 pt-16">

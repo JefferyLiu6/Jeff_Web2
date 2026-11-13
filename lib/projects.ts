@@ -24,6 +24,8 @@ const schema = z.object({
   demo: z.string().url().optional(),
   results: z.string().url().optional(),
   private: z.boolean().default(false),
+  /** Languages, frameworks and models, in the words a recruiter searches for. */
+  stack: z.array(z.string()).optional(),
 
   /** Set featured to 1, 2 or 3 to show the project on the home page. */
   featured: z.number().int().min(1).max(3).optional(),
@@ -48,6 +50,8 @@ const schema = z.object({
   stats: z.array(stat).optional(),
   statsNote: z.string().optional(),
   limits: z.array(z.string()).optional(),
+  /** The system as a left-to-right chain of stages, drawn as a diagram on the case study. */
+  flow: z.array(z.object({ who: z.string(), does: z.string() })).optional(),
 });
 
 export type Project = z.infer<typeof schema> & {

@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Jeffery Liu, Resume</title>
+<style>
+@font-face{font-family:Inter;src:url("../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:Fraunces;src:url("../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2") format("woff2");font-weight:100 900}
+@page{size:Letter;margin:0.42in 0.55in 0.38in}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;font-size:8.7pt;line-height:1.31;color:#16181d}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22pt;line-height:1;margin:0 0 4pt;letter-spacing:-0.01em}
+.contact{font-size:8.5pt;color:#3c4149;margin:0}
+.contact a{color:inherit;text-decoration:none}
+h2{font-size:8pt;letter-spacing:0.11em;text-transform:uppercase;font-weight:700;margin:7pt 0 3pt;padding-top:3.5pt;border-top:1.2pt solid #16181d}
+p{margin:0}
+.row{display:flex;justify-content:space-between;gap:12pt;align-items:baseline;margin-top:4.5pt}
+.row:first-of-type{margin-top:0}
+.t{font-weight:700}
+.o{color:#3c4149}
+.d{color:#3c4149;white-space:nowrap;font-size:8.8pt}
+.s{color:#5a6069;font-size:8.6pt}
+ul{margin:1.5pt 0 0;padding-left:11pt}
+li{margin:0 0 1.2pt}
+.skills p{margin-bottom:1.2pt}
+.skills b{font-weight:600}
+a{color:#16181d}
+a.t{text-decoration:none}
+</style></head><body>
+<h1>Jeffery Liu</h1>
+<p class="contact">Toronto, ON &nbsp;·&nbsp; <a href="mailto:jefferyliu6@gmail.com">jefferyliu6@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/jeffery-liu-ch/">linkedin.com/in/jeffery-liu-ch</a> &nbsp;·&nbsp; <a href="https://github.com/JefferyLiu6">github.com/JefferyLiu6</a> &nbsp;·&nbsp; Authorized to work in Canada</p>
+
+<h2>Summary</h2>
+<p>Applied AI engineer (MEng, University of Toronto, 3.97/4.0) who builds LLM agent and retrieval systems with evaluation harnesses, approval controls and measured reliability. Two IEEE conference papers in medical imaging.</p>
+
+<h2>Skills</h2>
+<div class="skills">
+<p><b>Languages:</b> Python, TypeScript, SQL, C++</p>
+<p><b>LLM and agents:</b> LangGraph, LangChain, tool calling, structured output, RAG, pgvector, LLM-as-judge, OpenAI/Anthropic APIs</p>
+<p><b>Machine learning:</b> PyTorch, Hugging Face Transformers, PEFT (LoRA), DPO, scikit-learn, XGBoost, LightGBM</p>
+<p><b>Backend and platform:</b> FastAPI, PostgreSQL, SQLite, React, Next.js, Docker, Kubernetes (AKS), Azure, MLflow, pytest</p>
+</div>
+
+<h2>Selected Projects</h2>
+<div class="row"><p><a class="t" href="https://github.com/JefferyLiu6/Kairo">Kairo</a> <span class="o">· LLM agent for tasks and calendar</span> <span class="s">· Python, LangGraph, FastAPI, SQLite, React, TypeScript</span></p><span class="d">Apr 2026 – present</span></div>
+<ul>
+<li>Independently designed and built a full-stack LLM agent: React/TypeScript UI, FastAPI backend, conversational orchestration and typed action execution.</li>
+<li>Implemented SQLite-backed dialogue state for clarification, choices and confirmations, with cancellation, replacement and expiration handling. Gated high-risk actions behind approval and restricted automatic retries to allowlisted reads.</li>
+<li>Built a deterministic offline evaluation harness covering intent, clarification, approvals and state changes. The recorded run passed 252/252 cases across 11 suites.</li>
+</ul>
+<div class="row"><p><a class="t" href="https://github.com/JefferyLiu6/linguaflow">LinguaFlow</a> <span class="o">· RAG tutor</span> <span class="s">· Next.js, FastAPI, LangGraph, PostgreSQL/pgvector, GPT-4.1</span></p><span class="d">Apr 2026 – Sep 2026</span></div>
+<ul>
+<li>Independently built and deployed an AI English tutor (full-stack application and RAG pipeline) that explains sentence rewrites from course materials.</li>
+<li>Improved citation reliability through source verification, reducing false references from 6/12 to 0/12 negative cases while increasing correct references from 7/12 to 11/12 supported questions in a paired synthetic evaluation.</li>
+<li>Implemented transactional index publication and version checks to prevent partial or incompatible indexes from being served, with PostgreSQL integration tests covering rollback, concurrent publication and incomplete-index rejection.</li>
+</ul>
+<div class="row"><p><a class="t" href="https://github.com/JefferyLiu6/RA_LLM">Structured Notes Model (RA_LLM)</a> <span class="o">· LLM fine-tuning</span> <span class="s">· PyTorch, Hugging Face Transformers, PEFT, TRL</span></p><span class="d">Mar 2026 – Apr 2026</span></div>
+<ul>
+<li>Reduced formatting failures from 77 to 1 across 125 test prompts by fine-tuning Qwen2.5-1.5B with LoRA on a 600-record dataset with fixed train/validation/test splits, then implemented DPO using 300 synthetic preference pairs.</li>
+</ul>
+
+<h2>Experience</h2>
+<div class="row"><p><span class="t">AI/ML Research Engineer, Quantitative Finance</span> <span class="o">· Independent four-person research collaboration</span></p><span class="d">Nov 2025 – Apr 2026</span></div>
+<ul>
+<li>Built a cryptocurrency arbitrage detection API in Python, then reimplemented its k-cycle search in C++ with pybind11 and OpenMP, about 25 times faster in benchmarks; served from AWS EC2 to the team's Go trading system.</li>
+<li>Built the evaluation pipeline for an American-option pricing study, benchmarking PPO, DQN and LSPI exercise policies against Black-Scholes and Longstaff-Schwartz on 2,056 SPY and AAPL contracts.</li>
+</ul>
+<div class="row"><p><span class="t">Research Assistant, Machine Learning Engineering</span> <span class="o">· The Hong Kong Polytechnic University</span></p><span class="d">Feb 2024 – Aug 2024</span></div>
+<ul>
+<li>Built reusable PyTorch/CUDA training workflows for 1,703 structural MRI scans, using nested cross-validation (10 outer folds, 5 inner) to compare models and correct prediction bias without leakage.</li>
+<li>Built 18 regional brain-age models and implemented percentile-matching bias correction, with lower cross-validation mean MAE and RMSE than Cole's correction across all 18 regions in the reported study.</li>
+</ul>
+<div class="row"><p><span class="t">Machine Learning Research Intern</span> <span class="o">· National Taipei University</span></p><span class="d">Jul 2023 – Aug 2023</span></div>
+<ul>
+<li>Ran and monitored LSTM, BiLSTM and Transformer training across 5+ GPU nodes on a 5,000-sample multilingual speech corpus, and compiled the comparative results the 8-person team used for model selection.</li>
+</ul>
+<div class="row"><p><span class="t">Software Engineering Intern, Data Systems</span> <span class="o">· The Hong Kong Polytechnic University</span></p><span class="d">Jun 2023 – Jul 2023</span></div>
+<ul>
+<li>Streamlined experimental workflows across 5+ optometry studies, reducing manual data preparation and quality-checking time by 80% through a Python data-acquisition and validation system.</li>
+</ul>
+
+<h2>Education</h2>
+<div class="row"><p><span class="t">University of Toronto</span> <span class="o">· MEng, Mechanical &amp; Industrial Engineering (emphasis: Data Analytics &amp; ML) · 3.97/4.0</span></p><span class="d">Sep 2024 – Oct 2025</span></div>
+<div class="row" style="margin-top:1.5pt"><p><span class="t">The Hong Kong Polytechnic University</span> <span class="o">· BEng, Electrical Engineering</span></p><span class="d">Sep 2019 – Jun 2024</span></div>
+
+<h2>Publications</h2>
+<p>Second author, "Predicting Intelligence Profile and Brain Age with Single- and Dual-Channel CNNs," IEEE ISBI 2025 (<a href="https://doi.org/10.1109/ISBI60581.2025.10981090">doi</a>). Fourth author, "Regional Brain Age Measures Based on Convolutional Neural Networks," IEEE EMBC 2025 (<a href="https://doi.org/10.1109/EMBC58623.2025.11252950">doi</a>).</p>
+</body></html>
