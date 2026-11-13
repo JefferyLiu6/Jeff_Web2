@@ -22,7 +22,7 @@ lede: An AI assistant for tasks and calendars, designed so the language model ne
 meta:
   - { label: My role, value: Sole designer and developer }
   - { label: When, value: April 2026 to now }
-  - { label: Built with, value: "Python, LangGraph, FastAPI, SQLite, React" }
+  - { label: Built with, value: "Python, LangGraph, LangChain, FastAPI, SQLite, React, TypeScript, with Claude or GPT models (configurable)" }
   - { label: Status, value: "Portfolio demo, not a production service" }
 stats:
   - { value: 252 of 252, caption: "evaluation cases, across 11 suites" }
@@ -31,7 +31,7 @@ stats:
   - { value: "280", caption: unit tests passing }
 statsNote: From the recorded run documented in the repository.
 limits:
-  - The evaluation is offline and deterministic. It does not measure behaviour with real users.
+  - The evaluation is offline and deterministic. It runs without a live model, so it tests the code around the model, not the quality of a particular model, and it does not measure behaviour with real users.
   - Duplicate execution was prevented in the scenarios I tested, not proven impossible.
   - The public app is a demo. It has not been run as a production service.
 demo: https://kairo-hazel.vercel.app
@@ -62,7 +62,7 @@ My first version gave the model a full list of tools and let it choose. It worke
 
 I rebuilt it so that each stage can do one thing and nothing else.
 
-1. **The model reads the request.** It gets no tools at all and must return structured fields. If its answer is malformed or unsure, a rule-based parser takes over.
+1. **The model reads the request.** It gets no tools at all and must return structured fields. Which model is a setting (Claude, GPT or a local model through Ollama, called through LangChain), because nothing after this step depends on it. If its answer is malformed or unsure, a rule-based parser takes over.
 2. **The workflow validates and plans.** A multi-step request is checked as a whole before anything changes. If one part is unclear, it asks instead of doing half.
 3. **A policy decides on approval.** Risky actions wait for a person. The policy lives outside the model, as an explicit list.
 4. **Storage makes the change.** An approval is claimed once before it runs. Automatic retries are limited to read-only actions.

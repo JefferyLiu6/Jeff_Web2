@@ -20,9 +20,9 @@ steps:
   - A small open model is fine-tuned on them.
   - A format checker scores every output automatically.
 image:
-  src: /projects/structured-notes-results.png
-  alt: Results summary for the Structured Notes Model. 600 examples, 125 held-out test prompts, and format compliance of 38% for the base model, 99% after LoRA tuning and 100% after preference tuning.
-  caption: Format compliance before and after fine-tuning, on 125 held-out prompts.
+  src: /projects/structured-notes-two-results.png
+  alt: Two separate results for the Structured Notes Model on 125 held-out prompts. With the original prompt, notes in the correct format rose from 48 for the base model to 124 after LoRA tuning. With a tightened prompt, they rose from 105 for the base model to 125 after preference tuning.
+  caption: Two separate measurements on the same 125 held-out prompts. The prompts differ, so they are not one chain.
   width: 1200
   height: 800
 
@@ -40,7 +40,7 @@ flow:
   - { who: Checker, does: Scores every output against the format rules automatically. }
 stats:
   - { value: 124 of 125, caption: "test prompts in the correct format after LoRA tuning (base model: 48)" }
-  - { value: 125 of 125, caption: "after preference tuning, on a tightened prompt" }
+  - { value: 125 of 125, caption: "after preference tuning, on a tightened prompt (base model: 105)" }
   - { value: "600", caption: "examples: 68 written by hand, 532 synthetic" }
   - { value: 86% to 83%, caption: "content-overlap score, LoRA to preference tuning" }
 statsNote: The two tuning stages were measured with different prompts, so they are separate results and not one before-and-after chain.
@@ -67,6 +67,8 @@ Asked nicely in a prompt, the base model followed the format on 48 of 125 test p
 4. **Score format and content separately.** A rule-based checker decides whether a note is in the correct format. A second measure compares its content with a reference note.
 
 ## What I learned
+
+The tightened prompt did a lot of the work on its own. With it, the untouched base model already followed the format on 105 of 125 prompts, against 48 with the original prompt. Preference tuning closed the last 20. That is why I report the two stages as separate results: adding them into one 48-to-125 story would credit the tuning with what the prompt did.
 
 Format improved, and content did not improve with it. After preference tuning every test note passed the format check, but the content-overlap score slipped from 86% to 83%. Pushing harder on structure cost a little substance.
 

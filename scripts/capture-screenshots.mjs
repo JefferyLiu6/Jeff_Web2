@@ -67,16 +67,12 @@ async function linguaflow(page) {
   await shot(page, "linguaflow-study-helper.png");
 }
 
-/** Structured Notes Model: the results figure from the repository, as a sharp image. */
+/** Structured Notes Model: the two-result chart, drawn from figures/structured-notes-two-results.html. */
 async function notes(page) {
-  const url = "https://raw.githubusercontent.com/JefferyLiu6/RA_LLM/HEAD/assets/screenshots/project_results.svg";
-  const svg = await (await fetch(url)).text();
-  if (!svg.includes("<svg")) throw new Error("Could not load the results figure");
-  await page.setViewportSize({ width: 1400, height: 933 });
-  await page.setContent(
-    `<body style="margin:0;background:#f8fafc;height:933px;display:flex;align-items:center">${svg}</body>`,
-  );
-  await shot(page, "structured-notes-results.png");
+  await page.setViewportSize({ width: 1000, height: 667 });
+  await page.goto(new URL("../figures/structured-notes-two-results.html", import.meta.url).href);
+  await page.evaluate(() => document.fonts.ready);
+  await shot(page, "structured-notes-two-results.png");
 }
 
 const jobs = { kairo, linguaflow, notes };

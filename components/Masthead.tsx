@@ -17,7 +17,7 @@ export function Masthead() {
       </div>
       <nav
         aria-label="Main"
-        className="flex flex-wrap gap-x-6 gap-y-1 border-b border-t border-b-rule border-t-ink text-meta font-medium"
+        className="flex flex-wrap gap-x-4 gap-y-1 max-[359px]:justify-between max-[359px]:gap-x-2 max-[359px]:text-[0.875rem] min-[420px]:gap-x-6 border-b border-t border-b-rule border-t-ink text-meta font-medium"
       >
         <NavLinks />
       </nav>

@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;src:url("../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:Fraunces;src:url("../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2") format("woff2");font-weight:100 900}
+*{box-sizing:border-box}body{margin:0;width:1000px;height:667px;background:#fff;font-family:Inter,sans-serif;color:#16181d;padding:32px 48px;display:flex;flex-direction:column;justify-content:center}
+h1{font-family:Fraunces,serif;font-weight:500;font-size:40px;letter-spacing:-0.02em;margin:0;line-height:1.1}
+.sub{font-size:21px;color:#3c4149;margin:12px 0 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:30px}
+.p{border-top:3px solid #16181d;padding-top:22px;display:flex;flex-direction:column;justify-content:center}
+.k{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5a6069}
+h2{font-family:Fraunces,serif;font-weight:500;font-size:31px;margin:8px 0 6px;line-height:1.15}
+.pr{font-size:18px;color:#3c4149;margin:0 0 22px}
+.r{margin-bottom:20px}.l{display:flex;justify-content:space-between;align-items:baseline;font-size:20px;font-weight:500;margin-bottom:10px}
+.n{font-family:Fraunces,serif;font-size:32px;font-weight:500}.n small{font-family:Inter;font-size:18px;color:#5a6069;font-weight:400}
+.t{height:22px;background:#e6e9ed;border-radius:2px}.b{height:22px;border-radius:2px;background:#8a9099}.b.a{background:#c8321f}
+.f{font-size:18px;color:#3c4149;border-top:1px solid #d9dce1;padding-top:16px;margin-top:14px}
+</style></head><body>
+<h1>Structured Notes Model</h1>
+<p class="sub">Notes in the correct format, out of 125 held-out test prompts. Two separate measurements.</p>
+<div class="grid">
+<div class="p"><span class="k">Result 1</span><h2>LoRA tuning</h2><p class="pr">Measured with the original prompt</p>
+<div class="r"><div class="l"><span>Base model</span><span class="n">48 <small>of 125</small></span></div><div class="t"><div class="b" style="width:38.4%"></div></div></div>
+<div class="r"><div class="l"><span>After LoRA tuning</span><span class="n">124 <small>of 125</small></span></div><div class="t"><div class="b a" style="width:99.2%"></div></div></div>
+</div>
+<div class="p"><span class="k">Result 2</span><h2>Preference tuning</h2><p class="pr">Measured with a tightened prompt</p>
+<div class="r"><div class="l"><span>Base model</span><span class="n">105 <small>of 125</small></span></div><div class="t"><div class="b" style="width:84%"></div></div></div>
+<div class="r"><div class="l"><span>After preference tuning</span><span class="n">125 <small>of 125</small></span></div><div class="t"><div class="b a" style="width:100%"></div></div></div>
+</div>
+</div>
+<p class="f">The prompts differ, so the two results are not one before-and-after.</p>
+</body></html>
