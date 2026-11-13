@@ -52,6 +52,8 @@ const schema = z.object({
   limits: z.array(z.string()).optional(),
   /** The system as a left-to-right chain of stages, drawn as a diagram on the case study. */
   flow: z.array(z.object({ who: z.string(), does: z.string() })).optional(),
+  /** A drawn diagram from components/diagrams, by name. Replaces the flow cards on wide screens. */
+  diagram: z.string().optional(),
 });
 
 export type Project = z.infer<typeof schema> & {
@@ -63,7 +65,8 @@ export type Project = z.infer<typeof schema> & {
 let cache: Project[] | null = null;
 
 export function getProjects(): Project[] {
-  if (cache) return cache;
+  // In development the files are re-read every time, so an edit shows up without a restart.
+  if (cache && process.env.NODE_ENV === "production") return cache;
   const files = fs.readdirSync(DIR).filter((f) => f.endsWith(".md"));
   const projects = files.map((file) => {
     const slug = file.replace(/\.md$/, "");

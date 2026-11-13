@@ -34,11 +34,12 @@ meta:
   - { label: Built with, value: "Next.js, FastAPI, LangGraph, PostgreSQL with pgvector, GPT-4.1" }
   - { label: Status, value: "Deployed demo, no measured learner outcomes" }
 flow:
-  - { who: Question, does: A learner asks about a drill card. }
-  - { who: Retrieve, does: "pgvector returns up to ten notes; the top five go forward." }
-  - { who: Verify, does: One model call picks the notes that support an answer, or none. }
-  - { who: Decide, does: "Answer with a source, answer without one, ask for missing text, or redirect." }
-  - { who: Reply, does: Code rebuilds the cited text from the stored note. }
+  - { who: Index, does: "31 notes, one chunk each, embedded with text-embedding-3-small into pgvector." }
+  - { who: Retrieve, does: "Cosine search returns up to ten notes; a rerank sends the top five forward." }
+  - { who: Verify, does: "One GPT-4.1 call picks the notes that support an answer, or none." }
+  - { who: Route, does: "Answer with a source, answer without one, ask for missing text, or redirect." }
+  - { who: Generate, does: "The LLM writes the answer; code rebuilds the cited text from the stored note." }
+diagram: linguaflow-pipeline
 stats:
   - { value: 0 of 12, caption: "false references on questions with no valid source (was 6 of 12)" }
   - { value: 11 of 12, caption: "supported questions given a correct reference (was 7 of 12)" }
@@ -82,6 +83,8 @@ A fair question is why the result above comes from 24 new questions and not the 
 I did re-run the 93. My first version of the check removed every false reference (16 of 31 down to 0 of 31), but it also became too cautious: correct references fell from 52 of 62 to 41 of 62. I then changed the check to win those back.
 
 By that point I had read every one of the 93 failures and tuned against them, so a good score on that set would prove little. I kept the 93 as a regression suite and wrote 24 new questions, froze them and their labels before running anything, and ran them once. The first fresh set failed one of its targets (3 of 4 questions with missing text were handled correctly), so I fixed that, set it aside as seen, and wrote a second fresh set. The numbers on this page are from that second set.
+
+![Three question sets. Only the last one was still unseen when it was run, so it is the one reported.](diagram:linguaflow-evaluation)
 
 The cost of doing it this way is that the two results are not one before-and-after on the same questions, and I say so wherever the number appears.
 

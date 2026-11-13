@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Markdown from "react-markdown";
+import Markdown, { defaultUrlTransform } from "react-markdown";
 import { getProject, getProjects } from "@/lib/projects";
 import Image from "next/image";
 import { Stat } from "@/components/Stat";
 import { Flow } from "@/components/Flow";
+import { Diagram } from "@/components/diagrams";
+
+const DIAGRAM = "diagram:";
 
 export function generateStaticParams() {
   return getProjects()
@@ -60,7 +63,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
         </dl>
       )}
 
-      {(p.image || p.flow) && (
+      {(p.image || p.flow || p.diagram) && (
         <div className="flex flex-col gap-10 pt-12">
           {p.image && (
             <figure className="flex max-w-[900px] flex-col gap-3">
@@ -77,12 +80,22 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
               {p.image.caption && <figcaption className="text-meta text-muted">{p.image.caption}</figcaption>}
             </figure>
           )}
-          {p.flow && (
+          {(p.flow || p.diagram) && (
             <section aria-labelledby="flow-h" className="flex flex-col gap-4">
               <h2 id="flow-h" className="label text-ink">
                 How it fits together
               </h2>
-              <Flow steps={p.flow} />
+              {/* The drawn diagram needs width. On a phone the same stages are shown as cards. */}
+              {p.diagram && (
+                <div className={p.flow ? "hidden md:block" : undefined}>
+                  <Diagram name={p.diagram} />
+                </div>
+              )}
+              {p.flow && (
+                <div className={p.diagram ? "md:hidden" : undefined}>
+                  <Flow steps={p.flow} />
+                </div>
+              )}
             </section>
           )}
         </div>
@@ -91,25 +104,40 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
       <div className="flex max-w-[640px] flex-col gap-16 pb-18 pt-16">
         <div className="case-body flex flex-col gap-5">
           <Markdown
+            // Lets `![Caption](diagram:name)` through; every other URL is cleaned as usual.
+            urlTransform={(url) => (url.startsWith(DIAGRAM) ? url : defaultUrlTransform(url))}
             components={{
               h2: (props) => (
                 <h2 className="mt-11 font-serif text-stat font-medium leading-[1.1] tracking-[-0.02em] first:mt-0" {...props} />
               ),
-              p: (props) => <p className="text-body text-body-colour" {...props} />,
+              p: ({ node, ...props }) => {
+                // A diagram is a figure, which cannot sit inside a paragraph.
+                const only = node?.children.length === 1 ? node.children[0] : undefined;
+                if (only?.type === "element" && only.tagName === "img" && String(only.properties.src).startsWith(DIAGRAM)) {
+                  return <>{props.children}</>;
+                }
+                return <p className="text-body text-body-colour" {...props} />;
+              },
               ol: (props) => <ol className="flex list-decimal flex-col gap-3 ps-6 text-body text-body-colour marker:font-serif marker:text-accent" {...props} />,
               ul: (props) => <ul className="flex list-disc flex-col gap-2 ps-5 text-body text-body-colour" {...props} />,
               strong: (props) => <strong className="font-semibold text-ink" {...props} />,
               a: (props) => <a className="underline" {...props} />,
-              img: ({ src, alt }) => (
-                // Screenshots inside a case study. Plain img keeps Markdown simple.
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={typeof src === "string" ? src : undefined}
-                  alt={alt ?? ""}
-                  loading="lazy"
-                  className="mt-2 block h-auto w-full rounded outline outline-1 -outline-offset-1 outline-black/10"
-                />
-              ),
+              img: ({ src, alt }) =>
+                typeof src === "string" && src.startsWith(DIAGRAM) ? (
+                  <figure className="my-3 flex flex-col gap-4">
+                    <Diagram name={src.slice(DIAGRAM.length)} />
+                    {alt && <figcaption className="text-meta text-muted">{alt}</figcaption>}
+                  </figure>
+                ) : (
+                  // Screenshots inside a case study. Plain img keeps Markdown simple.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={typeof src === "string" ? src : undefined}
+                    alt={alt ?? ""}
+                    loading="lazy"
+                    className="mt-2 block h-auto w-full rounded outline outline-1 -outline-offset-1 outline-black/10"
+                  />
+                ),
             }}
           >
             {p.body}
