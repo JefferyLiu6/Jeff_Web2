@@ -26,7 +26,7 @@ export const site = {
     "Before this I did machine-learning research in medical imaging, which taught me to distrust a result until I know exactly how it was measured. I bring that habit to every agent I build.",
 
   facts: [
-    { label: "Looking for", value: "AI agent and LLM engineering roles" },
+    { label: "Looking for", value: "Early-career AI agent and LLM engineering roles (new grad to 2 years)" },
     { label: "Based in", value: "Toronto. Authorized to work in Canada." },
     { label: "Education", value: "MEng, University of Toronto, GPA 3.97/4.0" },
     { label: "Research", value: "Two IEEE conference papers" },
@@ -55,16 +55,16 @@ export const site = {
 
   background: [
     {
-      when: "May 2026 – now",
+      when: "Mar 2026 – now",
       role: "Independent AI agent projects",
-      where: "Self-directed, Toronto",
-      did: "Designed, built and deployed Kairo and LinguaFlow end to end, and fine-tuned an open model for structured output.",
+      where: "Self-directed, Toronto. Part-time until April 2026, full-time since May.",
+      did: "Started as side projects during the research role below. Designed, built and deployed Kairo and LinguaFlow end to end, and fine-tuned an open model for structured output.",
       current: true,
     },
     {
       when: "Nov 2025 – Apr 2026",
       role: "AI/ML Research Engineer, Quantitative Finance",
-      where: "Four-person independent research collaboration, Toronto",
+      where: "Unpaid research collaboration for an outside sponsor. Team of four, Toronto.",
       did: "Built an arbitrage detection API and rewrote its search in C++, about 25 times faster in benchmarks. Built the evaluation pipeline for an option-pricing study.",
     },
     {

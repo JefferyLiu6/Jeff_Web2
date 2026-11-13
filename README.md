@@ -80,3 +80,5 @@ Colours, fonts and the six-step type scale are defined once in `app/globals.css`
 ## Deploy
 
 Import the repository in Vercel and add the domain. No environment variables are needed.
+
+The Structured Notes chart is drawn from `figures/structured-notes-two-results.html`; `npm run screenshots notes` re-renders it.

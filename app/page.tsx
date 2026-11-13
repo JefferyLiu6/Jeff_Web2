@@ -16,16 +16,8 @@ export default function Home() {
           <em className="text-accent">{site.headline.emphasis}</em>
           {site.headline.after}
         </h1>
-        {/* Facts come first in the markup so they sit under the headline on a phone. */}
-        <div className="flex flex-row-reverse flex-wrap items-start gap-x-16 gap-y-10">
-          <dl className="flex min-w-0 flex-[1_1_300px] flex-col border-t-2 border-ink">
-            {facts.map((f) => (
-              <div key={f.label} className="border-b border-rule py-3">
-                <dt className="label">{f.label}</dt>
-                <dd className="mt-1 text-body font-medium">{f.value}</dd>
-              </div>
-            ))}
-          </dl>
+        {/* Intro and main button first, so a phone shows them before the facts. */}
+        <div className="flex flex-wrap items-start gap-x-16 gap-y-10">
           <div className="flex min-w-0 flex-[1.6_1_420px] flex-col gap-6">
             <div className="flex flex-wrap items-start gap-6">
               {site.portraitSrc && (
@@ -53,6 +45,14 @@ export default function Home() {
               </a>
             </div>
           </div>
+          <dl className="flex min-w-0 flex-[1_1_300px] flex-col border-t-2 border-ink">
+            {facts.map((f) => (
+              <div key={f.label} className="border-b border-rule py-3">
+                <dt className="label">{f.label}</dt>
+                <dd className="mt-1 text-body font-medium">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -167,22 +167,17 @@ export default function Home() {
                   Email me
                 </a>
               )}
-              <a href={site.linkedin} className="link">
-                LinkedIn
-              </a>
             </div>
           </div>
           <div className="flex flex-col gap-3.5 rounded border border-ink p-8">
             <h3 className="font-serif text-lede font-medium">{site.contact.collaborate.title}</h3>
             <p className="text-body text-body-colour">{site.contact.collaborate.text}</p>
             <div className="flex flex-wrap gap-x-6 gap-y-3 text-body">
-              {site.email && (
-                <a href={`mailto:${site.email}`} className="link">
-                  Get in touch
-                </a>
-              )}
               <a href={site.linkedin} className="link">
                 Message me on LinkedIn
+              </a>
+              <a href={site.github} className="link">
+                GitHub
               </a>
             </div>
           </div>
