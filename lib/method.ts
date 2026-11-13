@@ -73,7 +73,7 @@ export const method = {
       example: {
         project: "Kairo",
         href: "/work/kairo",
-        text: "After the “as done” fix, the tests include tasks whose real titles contain “as done” or an apostrophe. The fix cannot pass by simply stripping those words.",
+        text: "Kairo’s safety work is covered by 68 adversarial tests and a 16-case adversarial evaluation suite. Each test that blocks a harmful request sits beside a look-alike request that must still go through, so a fix cannot pass by refusing everything.",
       },
       ask: "What is the most similar request that a real user would send, and does it still work?",
     },

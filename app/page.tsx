@@ -107,15 +107,18 @@ export default function Home() {
             {site.background.map((b, i) => (
               <li
                 key={b.role}
-                className={`flex flex-wrap gap-x-8 gap-y-1 border-t py-4 ${i === 0 ? "border-ink" : "border-rule-strong"}`}
+                className={`flex flex-wrap gap-x-8 gap-y-1 border-t py-5 ${i === 0 ? "border-ink" : "border-rule-strong"}`}
               >
                 <span
-                  className={`flex-[0_0_130px] text-meta ${"current" in b && b.current ? "font-semibold text-accent" : "text-muted"}`}
+                  className={`flex-[0_0_150px] text-meta ${"current" in b && b.current ? "font-semibold text-accent" : "text-muted"}`}
                 >
                   {b.when}
                 </span>
-                <span className="min-w-0 flex-[1_1_300px] font-semibold">{b.role}</span>
-                <span className="min-w-0 flex-[1_1_300px] text-meta text-body-colour">{b.where}</span>
+                <div className="flex min-w-0 flex-[1_1_300px] flex-col">
+                  <span className="font-semibold">{b.role}</span>
+                  <span className="text-meta text-muted">{b.where}</span>
+                </div>
+                <p className="min-w-0 flex-[1.3_1_320px] text-meta text-body-colour">{b.did}</p>
               </li>
             ))}
           </ul>
@@ -178,12 +181,9 @@ export default function Home() {
                   Get in touch
                 </a>
               )}
-              <a href={site.github} className="link">
-                GitHub
+              <a href={site.linkedin} className="link">
+                Message me on LinkedIn
               </a>
-              <Link href="/work" className="link">
-                All work
-              </Link>
             </div>
           </div>
         </div>

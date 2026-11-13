@@ -15,6 +15,11 @@ export function ProjectBlock({ project, index, last }: { project: Project; index
         </div>
         <p className="text-pretty font-serif text-lede leading-[1.3]">{p.summary}</p>
         <p className="max-w-[60ch] text-body text-body-colour">{p.detail}</p>
+        {p.stack && (
+          <p className="text-meta text-muted">
+            <span className="font-semibold text-ink">Built with:</span> {p.stack.join(", ")}
+          </p>
+        )}
         {p.stat && (
           <div className="max-w-[420px]">
             <Stat {...p.stat} />
@@ -25,7 +30,11 @@ export function ProjectBlock({ project, index, last }: { project: Project; index
       {p.image && (
         <figure className="flex min-w-0 flex-[1.7_1_460px] flex-col gap-3 self-start">
           {/* Every screenshot gets the same 3:2 mat and inset, so different apps look like one set. */}
-          <div className="relative aspect-[3/2] rounded bg-tint">
+          <a
+            href={p.image.src}
+            aria-label={`Open the ${p.title} screenshot at full size`}
+            className="relative block aspect-[3/2] rounded bg-tint"
+          >
             <div className="absolute inset-x-[4.5%] inset-y-[4.5%] overflow-hidden rounded bg-white shadow-[0_8px_24px_rgba(22,24,29,0.10)] outline outline-1 -outline-offset-1 outline-black/10">
               <Image
                 src={p.image.src}
@@ -37,7 +46,7 @@ export function ProjectBlock({ project, index, last }: { project: Project; index
                 priority={index === 0}
               />
             </div>
-          </div>
+          </a>
           {p.image.caption && <figcaption className="text-meta text-muted">{p.image.caption}</figcaption>}
         </figure>
       )}

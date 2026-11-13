@@ -5,7 +5,7 @@ import { WorkList } from "@/components/WorkList";
 
 export const metadata: Metadata = {
   title: "All work",
-  description: "Every project, most recent first, each with the one result I'd stand behind.",
+  description: "Agent and LLM systems first, then other engineering and data work, each with one defensible result.",
 };
 
 export default function WorkPage() {
@@ -16,6 +16,7 @@ export default function WorkPage() {
     year: p.year,
     summary: p.summary,
     result: p.result,
+    stack: p.stack,
     code: p.code,
     demo: p.demo,
     hasCaseStudy: p.hasCaseStudy,
@@ -27,7 +28,7 @@ export default function WorkPage() {
       <header className="flex flex-col gap-5 pb-10 pt-14">
         <h1 className="display text-display-lg">All work</h1>
         <p className="max-w-[680px] text-pretty font-serif text-lede leading-[1.35]">
-          Everything I&rsquo;ve built, most recent first, each with the one result I&rsquo;d stand behind.
+          Agent and LLM systems first, then the other engineering and data work that got me here. Each has the one result I&rsquo;d stand behind.
         </p>
       </header>
       <WorkList items={items} areas={AREAS} />

@@ -44,10 +44,18 @@ Everything about you (headline, facts, background, publications, contact cards) 
 
 Empty values are hidden, so the site never shows a dead link. Still to fill in:
 
-- [ ] `email`: a public-facing address
-- [ ] `resumeHref`: add `public/resume.pdf`, then set to `"/resume.pdf"`
 - [ ] `portraitSrc`: add `public/portrait.jpg`, then set to `"/portrait.jpg"`
-- [ ] `available`: your start date
+
+## Update the resume
+
+The PDF behind the Download resume buttons is built from `resume/resume.html`:
+
+```bash
+npx playwright install chromium   # first time only
+npm run resume
+```
+
+Keep it to one page, and keep every number in line with the career ledger.
 
 ## Retake the screenshots
 

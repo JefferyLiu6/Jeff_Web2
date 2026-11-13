@@ -41,6 +41,13 @@ image:
   caption: Kairo asks for approval before deleting a calendar block.
   width: 1200
   height: 800
+stack: [Python, LangGraph, LangChain, FastAPI, SQLite, React, TypeScript, "Claude or GPT models (configurable)"]
+flow:
+  - { who: Model, does: Reads the request and returns structured fields. No tools. }
+  - { who: Workflow, does: Validates the fields and plans every step before acting. }
+  - { who: Policy, does: Decides whether a person must approve. }
+  - { who: Storage, does: Makes the change once the approval is claimed. }
+  - { who: Audit log, does: Records every decision and result. }
 ---
 
 ## In short

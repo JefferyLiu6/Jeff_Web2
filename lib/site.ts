@@ -10,11 +10,11 @@ export const site = {
     "AI engineer in Toronto building LLM agents with approval controls and evaluation suites.",
   url: "https://jefferyliu.dev",
 
-  // TODO(Jeffery): fill these in. Empty values are hidden on the site.
-  email: "", // a public-facing address
-  resumeHref: "", // put resume.pdf in /public, then set this to "/resume.pdf"
+  // Leave any of these empty to hide it on the site.
+  email: "jefferyliu6@gmail.com",
+  resumeHref: "/Jeffery-Liu-Resume.pdf", // the file lives in /public
   portraitSrc: "", // put portrait.jpg in /public, then set this to "/portrait.jpg"
-  available: "", // for example "Immediately" or "January 2027"
+  available: "Immediately",
 
   linkedin: "https://www.linkedin.com/in/jeffery-liu-ch/",
   github: "https://github.com/JefferyLiu6",
@@ -30,11 +30,12 @@ export const site = {
     { label: "Based in", value: "Toronto. Authorized to work in Canada." },
     { label: "Education", value: "MEng, University of Toronto, GPA 3.97/4.0" },
     { label: "Research", value: "Two IEEE conference papers" },
+    { label: "Works with", value: "Python, TypeScript, LangGraph, LangChain, FastAPI, PostgreSQL, PyTorch" },
   ],
 
   quote: {
     text: "An assistant that says “done” and changes nothing is worse than one that fails out loud.",
-    note: "So my tests check what was actually saved, not what the assistant said. One of them caught exactly this bug in Kairo.",
+    note: "So my tests check what was actually saved, not what the assistant said.",
   },
 
   principles: [
@@ -53,21 +54,55 @@ export const site = {
   ],
 
   background: [
-    { when: "2026 to now", role: "Independent AI agent projects", where: "Building Kairo and LinguaFlow full-time, Toronto", current: true },
-    { when: "2025 to 2026", role: "AI/ML Research Engineer, Quantitative Finance", where: "Independent four-person research collaboration, Toronto" },
-    { when: "2024", role: "Research Assistant, Machine Learning Engineering", where: "The Hong Kong Polytechnic University. Medical imaging." },
-    { when: "Summer 2023", role: "Machine Learning Research Intern", where: "National Taipei University. Speech technology with a hospital partner." },
-    { when: "Summer 2023", role: "Software Engineering Intern, Data Systems", where: "The Hong Kong Polytechnic University. Eye-tracking research software." },
-    { when: "Summer 2022", role: "Mitacs Globalink Research Intern", where: "École de technologie supérieure, Montréal" },
+    {
+      when: "May 2026 – now",
+      role: "Independent AI agent projects",
+      where: "Self-directed, Toronto",
+      did: "Designed, built and deployed Kairo and LinguaFlow end to end, and fine-tuned an open model for structured output.",
+      current: true,
+    },
+    {
+      when: "Nov 2025 – Apr 2026",
+      role: "AI/ML Research Engineer, Quantitative Finance",
+      where: "Four-person independent research collaboration, Toronto",
+      did: "Built an arbitrage detection API and rewrote its search in C++, about 25 times faster in benchmarks. Built the evaluation pipeline for an option-pricing study.",
+    },
+    {
+      when: "Feb 2024 – Aug 2024",
+      role: "Research Assistant, Machine Learning Engineering",
+      where: "The Hong Kong Polytechnic University",
+      did: "Built the deep-learning pipeline for 1,703 MRI scans and 18 regional brain-age models. Co-authored two IEEE papers.",
+    },
+    {
+      when: "Jul 2023 – Aug 2023",
+      role: "Machine Learning Research Intern",
+      where: "National Taipei University",
+      did: "Ran and monitored model training for an eight-person team building assistive speech technology with a hospital partner.",
+    },
+    {
+      when: "Jun 2023 – Jul 2023",
+      role: "Software Engineering Intern, Data Systems",
+      where: "The Hong Kong Polytechnic University",
+      did: "Built eye-tracking data software used across 5+ studies, cutting manual preparation from about 10 minutes to 2 per session.",
+    },
+    {
+      when: "Jul 2022 – Sep 2022",
+      role: "Mitacs Globalink Research Intern",
+      where: "École de technologie supérieure, Montréal",
+      did: "Designed and tested wireless power transfer prototypes.",
+    },
   ],
 
   education: [
-    { school: "University of Toronto.", detail: "MEng, Mechanical & Industrial Engineering, emphasis in Data Analytics & Machine Learning. GPA 3.97/4.0." },
-    { school: "Hong Kong Polytechnic University.", detail: "BEng, Electrical Engineering." },
+    {
+      school: "University of Toronto, 2024 – 2025.",
+      detail: "MEng, Mechanical & Industrial Engineering, emphasis in Data Analytics & Machine Learning. GPA 3.97/4.0.",
+    },
+    { school: "Hong Kong Polytechnic University, 2019 – 2024.", detail: "BEng, Electrical Engineering." },
   ],
 
   publications: [
-    { title: "Predicting Intelligence Profile and Brain Age with Single- and Dual-Channel CNNs.", venue: "IEEE ISBI 2025, second author.", doi: "" },
+    { title: "Predicting Intelligence Profile and Brain Age with Single- and Dual-Channel CNNs.", venue: "IEEE ISBI 2025, second author.", doi: "https://doi.org/10.1109/ISBI60581.2025.10981090" },
     { title: "Regional Brain Age Measures Based on Convolutional Neural Networks.", venue: "IEEE EMBC 2025, fourth author.", doi: "https://doi.org/10.1109/EMBC58623.2025.11252950" },
   ],
 
