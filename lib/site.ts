@@ -55,7 +55,7 @@ export const site = {
 
   background: [
     {
-      when: "Mar 2026 – now",
+      when: "Apr 2026 – now",
       role: "Independent AI agent projects",
       where: "Self-directed, Toronto. Part-time until April 2026, full-time since May.",
       did: "Started as side projects during the research role below. Designed, built and deployed Kairo and LinguaFlow end to end, and fine-tuned an open model for structured output.",
