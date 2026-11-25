@@ -29,10 +29,10 @@ async function withPage(fn) {
 
 const shot = (page, name) => page.screenshot({ path: path.join(out, name), animations: "disabled" });
 
-/** Kairo: ask to delete a calendar block and capture the approval card. */
+/** Kairo: ask to move an event and capture the approval card. */
 async function kairo(page) {
-  await page.goto("https://kairo-hazel.vercel.app/app", { waitUntil: "domcontentloaded" });
-  // The free backend sleeps when idle and can take a minute to wake.
+  // /app needs a signed-in session; /demo creates a temporary demo account first.
+  await page.goto("https://kairo-mu-two.vercel.app/demo", { waitUntil: "domcontentloaded" });
   const input = page.getByPlaceholder(/Ask Kairo/);
   await input.waitFor({ timeout: 120_000 });
   const send = async (text) => {
@@ -41,7 +41,7 @@ async function kairo(page) {
   };
   await send("What's on my schedule this afternoon?");
   await page.waitForTimeout(12_000);
-  await send("Delete my deep work block tomorrow");
+  await send("Move my lunch with Maya to 1 PM.");
   await page.getByText(/action required/i).waitFor({ timeout: 60_000 });
   await page.getByRole("button", { name: /Approve/ }).waitFor();
   await shot(page, "kairo-approval-gate.png");

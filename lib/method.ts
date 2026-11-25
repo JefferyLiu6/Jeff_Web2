@@ -31,15 +31,15 @@ export const method = {
       rule: "The part that understands language should have no power to act.",
       why: "A language model is good at reading a messy request and poor at being trusted with consequences. If it can call any tool, a single misreading becomes a real change that nobody approved.",
       steps: [
-        "Give the model one job: turn the request into structured fields. It gets no tools.",
-        "Make it answer in a strict format, and fall back to rule-based parsing when the answer is malformed or unsure.",
+        "Let the model only propose: one typed action per call, with no tool that writes.",
+        "Make it answer in a strict format, and check the proposal against the user's own words; send a mismatch back once, then ask.",
         "Let ordinary code validate the request, plan the steps and decide whether a person must approve.",
         "Check a multi-step request as a whole before changing anything, so it never does half.",
       ],
       example: {
         project: "Kairo",
         href: "/work/kairo",
-        text: "The first version let the model choose from every tool. I replaced it with five stages: the model extracts, the workflow validates, a policy approves, storage makes the change, and an audit log records it. I also tried rules alone, with no model. That was easy to test but missed messy phrasing, so the final design uses both.",
+        text: "The first version let the model choose from every tool. I replaced it with five stages: the model extracts, the workflow validates, a policy approves, storage makes the change, and an audit log records it. I also tried rules alone, with no model. That was easy to test but missed messy phrasing. A blind test then showed the five-stage version got only about 30% of un-coached messages right, so the current design lets models propose one typed action at a time while code checks, approves and stores it: 96–97% right on the same messages.",
       },
       ask: "If the model misreads this request, what is the worst thing that can happen without a person seeing it?",
     },
@@ -56,7 +56,7 @@ export const method = {
       example: {
         project: "Kairo",
         href: "/work/kairo",
-        text: "A request to mark a quoted task as done replied normally and left the task unfinished: the words “as done” had been kept inside the title it searched for. A test that asserted the completion flag in storage caught it. The recorded run now passes 252 of 252 cases across 11 suites.",
+        text: "A request to mark a quoted task as done replied normally and left the task unfinished: the words “as done” had been kept inside the title it searched for. A test that asserted the completion flag in storage caught it. The offline suite passes 252 of 252 cases across 11 suites, and the blind eval judges every turn by what ends up stored.",
       },
       ask: "If the reply were a polite lie, would this test still pass?",
     },
