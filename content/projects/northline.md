@@ -8,6 +8,16 @@ result: Hybrid search passed 17 of 18 technical fact checks, against 15 for vect
 code: https://github.com/JefferyLiu6/Northline-Knowledge-Workspace
 stack: [Python, FastAPI, Vue, MySQL, PostgreSQL / pgvector, Ollama (llama3.1:8b, mxbai-embed-large), Docker]
 
+featured: 3
+detail: Built on an existing RAG codebase. I fixed what makes such a system risky to rely on, so replaced documents stop being searchable, interrupted jobs recover, and search methods are compared by the facts they get wrong.
+stat:
+  value: 17 of 18
+  caption: technical fact checks passed with hybrid search, against 15 for vector search, on a 50-question development set
+steps:
+  - Support documents are parsed, split and indexed, with every attempt recorded.
+  - An agent asks a question and gets an answer from the matching passages.
+  - The passages stay on screen, so the answer can be checked before it is used.
+
 kicker: Case study · Retrieval you can rely on
 lede: A knowledge workspace for a fictional industrial-equipment support desk, built on an existing FastAPI and Vue RAG codebase. My work was making it dependable to run, with documents that update cleanly, jobs that recover after a crash, and a retrieval comparison that counts failures.
 meta:
@@ -16,9 +26,9 @@ meta:
   - { label: Built with, value: "Python, FastAPI, Vue, PostgreSQL with pgvector, MySQL, local Ollama models, Docker" }
   - { label: Status, value: "Runs locally with Docker, not deployed" }
 image:
-  src: /projects/northline-answer.png
-  alt: Northline workspace. A support agent asks for the maximum number of data points on the GTE-3000Pro for error ERR-5022, and the answer, 20,000, appears with a collapsed list of eight sources and helpful or not-helpful buttons.
-  caption: An answer to a fault-code question, with its eight retrieved sources one click away.
+  src: /projects/northline-documents.png
+  alt: Northline workspace, Document Management page. Eleven documents are listed with their knowledge base, file type and size, each marked Parsed and Completed for embedding, with search filters and an Upload document button above.
+  caption: The knowledge collection, with 11 documents across three knowledge bases, each parsed and embedded.
   width: 1200
   height: 800
 flow:

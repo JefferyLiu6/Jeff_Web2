@@ -10,7 +10,6 @@ codeLabel: Code (RA_LLM)
 results: https://github.com/JefferyLiu6/RA_LLM/blob/78191e1af7a003d09a06f48a4bf46959154047d2/outputs/sft_eval_results.md
 stack: [PyTorch, Hugging Face Transformers, PEFT (LoRA), TRL (DPO), Qwen2.5-1.5B]
 
-featured: 3
 detail: I fine-tuned an open model so its research notes always follow the same structure, which lets other software check and use them without a person in between.
 stat:
   value: 1 of 125

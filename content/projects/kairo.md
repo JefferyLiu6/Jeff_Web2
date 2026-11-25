@@ -38,7 +38,7 @@ limits:
 demo: https://kairo-mu-two.vercel.app
 image:
   src: /projects/kairo-approval-gate.png
-  alt: Kairo chat. The user asks to move lunch with Maya to 1 PM, and Kairo shows an "Action required" card with the old and new times, Approve and Reject buttons, and when the request expires.
+  alt: Kairo, with the chat beside the day calendar. The user asks to move lunch with Maya to 1 PM, and Kairo shows an "Action required" card with the old and new times, Approve and Reject buttons, and when the request expires.
   caption: Kairo asks for approval before moving an event, and the request expires if nobody decides.
   width: 1200
   height: 800
