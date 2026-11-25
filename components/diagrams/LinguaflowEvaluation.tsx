@@ -22,7 +22,7 @@ const SETS = [
     count: "24",
     name: "Fresh set 2",
     steps: ["Questions and labels frozen before any run.", "Run once."],
-    end: "The numbers on this page.",
+    end: "The September release figures.",
     reported: true,
   },
 ];

@@ -2,19 +2,19 @@
 title: LinguaFlow
 area: AI agents
 year: "2026"
-date: 2026-09
+date: 2026-11
 summary: An English tutor that shows its sources, and says so when it has none.
-result: False references fell from 6 of 12 to 0 of 12 in a paired test on synthetic questions.
+result: The source check raised the share of cited sources that were valid from 35.6% to 86.4%, on 100 synthetic questions over a 200-note course.
 code: https://github.com/JefferyLiu6/linguaflow
 demo: https://linguaflow-demo.vercel.app
-results: https://github.com/JefferyLiu6/linguaflow/blob/808eccc6678a3355cc61aa061c18cccc06c28201/docs/RELEASE_VALIDATION_RESULTS.md
+results: https://github.com/JefferyLiu6/linguaflow/blob/e1258d8b677fdfdad2805db075e7d2d0e72b84d3/docs/EXPANSION_EVALUATION_RESULTS.md
 stack: [Next.js, TypeScript, FastAPI, LangGraph, PostgreSQL / pgvector, Supabase, OpenAI GPT-4.1, text-embedding-3-small]
 
 featured: 2
 detail: Before the tutor cites course material, a verification step checks that the source really supports the explanation. If it does not, the tutor does not cite it.
 stat:
-  value: 0 of 12
-  caption: false references, down from 6 of 12, in a paired test on synthetic questions
+  value: 86.4%
+  caption: of cited sources were valid, up from 35.6% without the check, on 100 synthetic questions over a 200-note course
 steps:
   - A learner asks why a sentence was rewritten.
   - The tutor finds course notes that might explain it.
@@ -30,7 +30,7 @@ kicker: Case study · Retrieval and grounding
 lede: An English tutor that explains why a sentence was rewritten, and only cites a course note when that note really supports the explanation.
 meta:
   - { label: My role, value: Sole designer and developer }
-  - { label: When, value: April to September 2026 }
+  - { label: When, value: April to November 2026 }
   - { label: Built with, value: "Next.js, FastAPI, LangGraph, PostgreSQL with pgvector, GPT-4.1" }
   - { label: Status, value: "Deployed demo, no measured learner outcomes" }
 flow:
@@ -41,17 +41,18 @@ flow:
   - { who: Generate, does: "The LLM writes the answer; code rebuilds the cited text from the stored note." }
 diagram: linguaflow-pipeline
 stats:
-  - { value: 0 of 12, caption: "false references on questions with no valid source (was 6 of 12)" }
-  - { value: 11 of 12, caption: "supported questions given a correct reference (was 7 of 12)" }
-  - { value: 4.6 s, caption: "95th-percentile response time, measured locally" }
-  - { value: "$0.0043", caption: "average model cost per request" }
-statsNote: Paired comparison on 24 new synthetic questions, with and without the check, on the same retrieved candidates. These are not the 93 questions that exposed the problem; the case study explains why. It measures which source was chosen, not how good the written answer was.
+  - { value: 86.4%, caption: "of cited sources valid (was 35.6% without the check)" }
+  - { value: 2 of 40, caption: "false references on questions with no valid source (was 31 of 40)" }
+  - { value: 3.20 s, caption: "95th-percentile response time, measured locally" }
+  - { value: "$0.004072", caption: "average model cost per question" }
+statsNote: "From a paired run on November 16, 2026: 100 frozen synthetic questions over the course expanded to 200 notes, each answered with and without the check. Precision is strict: a plausible note outside the frozen labels counts as wrong. The expanded course was evaluated locally; the live demo still uses the original 31 notes."
 limits:
-  - The 24 test questions are synthetic. No real learners have been measured.
+  - The test questions are synthetic, and the 100 in the larger run were AI-written with knowledge of the course. No real learners have been measured.
+  - The 200-note course is not yet published. The live demo still answers from the original 31 notes.
   - The final version of the check was not re-run on the original 93 questions. An earlier version was, and that set can no longer count as unseen.
   - The metadata reranker is still in the code for drill cards. I have not shown that it helps there either.
-  - The course has only 31 notes. At that size, putting every note in the prompt is a credible alternative to retrieval, and the project's own documentation says so.
-  - The verification step accounts for about 98% of the model cost per request.
+  - The live course has only 31 notes. At that size, putting every note in the prompt is a credible alternative to retrieval, and the project's own documentation says so.
+  - "The verification step is most of the model cost: $0.004072 per question against $0.000113 without it."
   - Response time was measured on a local pipeline, not under production load.
 ---
 
@@ -82,11 +83,17 @@ A fair question is why the result above comes from 24 new questions and not the 
 
 I did re-run the 93. My first version of the check removed every false reference (16 of 31 down to 0 of 31), but it also became too cautious: correct references fell from 52 of 62 to 41 of 62. I then changed the check to win those back.
 
-By that point I had read every one of the 93 failures and tuned against them, so a good score on that set would prove little. I kept the 93 as a regression suite and wrote 24 new questions, froze them and their labels before running anything, and ran them once. The first fresh set failed one of its targets (3 of 4 questions with missing text were handled correctly), so I fixed that, set it aside as seen, and wrote a second fresh set. The numbers on this page are from that second set.
+By that point I had read every one of the 93 failures and tuned against them, so a good score on that set would prove little. I kept the 93 as a regression suite and wrote 24 new questions, froze them and their labels before running anything, and ran them once. The first fresh set failed one of its targets (3 of 4 questions with missing text were handled correctly), so I fixed that, set it aside as seen, and wrote a second fresh set. The September release figures, 0 of 12 false references and 11 of 12 correct references, are from that second set.
 
-![Three question sets. Only the last one was still unseen when it was run, so it is the one reported.](diagram:linguaflow-evaluation)
+![Three question sets. Only the last one was still unseen when it was run, so the September release figures come from it.](diagram:linguaflow-evaluation)
 
 The cost of doing it this way is that the two results are not one before-and-after on the same questions, and I say so wherever the number appears.
+
+## Scaling the course to 200 notes
+
+In November I expanded the course from 31 to 200 notes and ran a larger paired test: 100 frozen synthetic questions, each answered with and without the check. The share of cited sources that were valid rose from 35.6% to 86.4%, and false references on questions with no valid source fell from 31 of 40 to 2 of 40.
+
+Retrieval itself did not change. In both arms 86.7% of supported questions had a valid note in the top five, so the gain comes from choosing among the candidates and declining when none fit. The expanded course is validated locally and not yet published.
 
 ## Keeping the index safe
 
@@ -94,4 +101,4 @@ Publishing new course notes happens in one database transaction: the notes, the 
 
 ## What it cost
 
-The verification step is not free. It accounts for about 98% of the model cost of each request, and the 95th-percentile response time in local testing is 4.6 seconds. I publish both next to the accuracy numbers, because whether that trade is worth it depends on the product.
+The verification step is not free. In the 200-note run it raised the model cost per question from $0.000113 to $0.004072, and the 95th-percentile response time in local testing from 2.22 to 3.20 seconds. I publish both next to the accuracy numbers, because whether that trade is worth it depends on the product.
