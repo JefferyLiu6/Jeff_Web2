@@ -34,15 +34,15 @@ a.t{text-decoration:none}
 <p><b>Languages:</b> Python, TypeScript, SQL, C++</p>
 <p><b>LLM and agents:</b> LangGraph, LangChain, tool calling, structured output, RAG, pgvector, LLM-as-judge, OpenAI/Anthropic APIs</p>
 <p><b>Machine learning:</b> PyTorch, Hugging Face Transformers, PEFT (LoRA), DPO, scikit-learn, XGBoost, LightGBM</p>
-<p><b>Backend and platform:</b> FastAPI, PostgreSQL, SQLite, React, Next.js, Docker, Kubernetes (AKS), Azure, MLflow, pytest</p>
+<p><b>Backend and platform:</b> FastAPI, PostgreSQL, SQLite, React, Next.js, Docker, Kubernetes (AKS), Azure, Oracle Cloud, MLflow, pytest</p>
 </div>
 
 <h2>Selected Projects</h2>
-<div class="row"><p><a class="t" href="https://github.com/JefferyLiu6/Kairo">Kairo</a> <span class="o">· LLM agent for tasks and calendar</span> <span class="s">· Python, LangGraph, FastAPI, SQLite, React, TypeScript</span></p><span class="d">Apr 2026 – present</span></div>
+<div class="row"><p><a class="t" href="https://github.com/JefferyLiu6/Kairo">Kairo</a> <span class="o">· LLM agent for tasks and calendar</span> <span class="s">· Python, LangGraph, FastAPI, SQLite, React, TypeScript, Docker</span></p><span class="d">Apr 2026 – present</span></div>
 <ul>
-<li>Independently designed and built a full-stack LLM agent: React/TypeScript UI, FastAPI backend, conversational orchestration and typed action execution.</li>
-<li>Implemented SQLite-backed dialogue state for clarification, choices and confirmations, with cancellation, replacement and expiration handling. Gated high-risk actions behind approval and restricted automatic retries to allowlisted reads.</li>
-<li>Built a deterministic offline evaluation harness covering intent, clarification, approvals and state changes. The recorded run passed 252/252 cases across 11 suites.</li>
+<li>Independently built a full-stack LangGraph agent in which models only propose typed tool calls; code checks each proposal against the user's own date and time wording, applies approval policy, and replies from what was stored.</li>
+<li>Built a blind evaluation scoring 127 un-coached messages from 14 simulated users by stored state; the agent graph got 96% and 97% of turns right with no wrong results reported as done, against about 30% for the workflow it replaced.</li>
+<li>Hardened it for public use with expiring approvals, idempotency keys so a resent message runs once, and email verification with TOTP MFA; deployed on an Oracle Cloud VM (Docker Compose, Caddy HTTPS) behind Vercel, with 1,555 tests passing.</li>
 </ul>
 <div class="row"><p><a class="t" href="https://github.com/JefferyLiu6/linguaflow">LinguaFlow</a> <span class="o">· RAG tutor</span> <span class="s">· Next.js, FastAPI, LangGraph, PostgreSQL/pgvector, GPT-4.1</span></p><span class="d">Apr 2026 – Sep 2026</span></div>
 <ul>
