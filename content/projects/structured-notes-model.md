@@ -38,6 +38,7 @@ flow:
   - { who: LoRA tuning, does: Teaches the format from the training examples. }
   - { who: Preference tuning, does: "Shows the model 300 pairs of a good note and a flawed one." }
   - { who: Checker, does: Scores every output against the format rules automatically. }
+diagram: notes-training
 stats:
   - { value: 124 of 125, caption: "test prompts in the correct format after LoRA tuning (base model: 48)" }
   - { value: 125 of 125, caption: "after preference tuning, on a tightened prompt (base model: 105)" }
@@ -65,6 +66,8 @@ Asked nicely in a prompt, the base model followed the format on 48 of 125 test p
 2. **Teach the format with LoRA.** A small adapter is trained on the 400 examples while the base model stays frozen.
 3. **Target the remaining mistakes.** For preference tuning (DPO) I built 300 pairs: a correct note beside the same note with one planted flaw, such as an extra bullet or trailing text. The pairs come only from training and validation data, never from the test set.
 4. **Score format and content separately.** A rule-based checker decides whether a note is in the correct format. A second measure compares its content with a reference note.
+
+![One of the 300 DPO preference pairs. Both completions answer the same prompt, and training pushes the model toward the chosen one.](diagram:notes-preference-pair)
 
 ## What I learned
 
