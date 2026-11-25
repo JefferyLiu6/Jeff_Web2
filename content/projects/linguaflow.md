@@ -4,7 +4,7 @@ area: AI agents
 year: "2026"
 date: 2026-11
 summary: An English tutor that shows its sources, and says so when it has none.
-result: The source check raised the share of cited sources that were valid from 35.6% to 86.4%, on 100 synthetic questions over a 200-note course.
+result: With the source check, 86.4% of the course notes the tutor cited really supported its answer, up from 35.6% without it, on 100 test questions.
 code: https://github.com/JefferyLiu6/linguaflow
 demo: https://linguaflow-demo.vercel.app
 results: https://github.com/JefferyLiu6/linguaflow/blob/e1258d8b677fdfdad2805db075e7d2d0e72b84d3/docs/EXPANSION_EVALUATION_RESULTS.md
@@ -14,7 +14,7 @@ featured: 2
 detail: Before the tutor cites course material, a verification step checks that the source really supports the explanation. If it does not, the tutor does not cite it.
 stat:
   value: 86.4%
-  caption: of cited sources were valid, up from 35.6% without the check, on 100 synthetic questions over a 200-note course
+  caption: of the course notes the tutor cited really supported its answer, up from 35.6% without the check. 100 test questions over a 200-note course.
 steps:
   - A learner asks why a sentence was rewritten.
   - The tutor finds course notes that might explain it.
@@ -41,7 +41,7 @@ flow:
   - { who: Generate, does: "The LLM writes the answer; code rebuilds the cited text from the stored note." }
 diagram: linguaflow-pipeline
 stats:
-  - { value: 86.4%, caption: "of cited sources valid (was 35.6% without the check)" }
+  - { value: 86.4%, caption: "of cited course notes really supported the answer (35.6% without the check)" }
   - { value: 2 of 40, caption: "false references on questions with no valid source (was 31 of 40)" }
   - { value: 3.20 s, caption: "95th-percentile response time, measured locally" }
   - { value: "$0.004072", caption: "average model cost per question" }

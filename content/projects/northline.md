@@ -4,7 +4,7 @@ area: AI agents
 year: "2026"
 date: 2026-11
 summary: A support workspace that answers equipment and warranty questions from company documents, and shows the passages behind each answer.
-result: Hybrid search passed 94.4% of technical fact checks (17 of 18), against 83.3% (15 of 18) for vector search, on a 50-question development set.
+result: With hybrid search, 94.4% of technical questions (17 of 18) got an answer containing every required detail, against 83.3% with plain vector search.
 code: https://github.com/JefferyLiu6/Northline-Knowledge-Workspace
 stack: [Python, FastAPI, Vue, MySQL, PostgreSQL / pgvector, Ollama (llama3.1:8b, mxbai-embed-large), Docker]
 
@@ -12,7 +12,7 @@ featured: 3
 detail: Built on an existing RAG codebase. I fixed what makes such a system risky to rely on, so replaced documents stop being searchable, interrupted jobs recover, and search methods are compared by the facts they get wrong.
 stat:
   value: 94.4%
-  caption: of technical fact checks passed with hybrid search (17 of 18), against 83.3% for vector search, on a 50-question development set
+  caption: of technical questions got an answer with every required detail, such as a limit or error code (17 of 18), using hybrid search. Plain vector search managed 83.3%.
 steps:
   - Support documents are parsed, split and indexed, with every attempt recorded.
   - An agent asks a question and gets an answer from the matching passages.
@@ -38,7 +38,7 @@ flow:
   - { who: Retrieve, does: "Vector search, hybrid search, or hybrid with reranking." }
   - { who: Answer, does: "llama3.1:8b answers, with the source passages on screen." }
 stats:
-  - { value: 94.4%, caption: "technical fact checks passed with hybrid search, 17 of 18 (vector search: 83.3%, 15 of 18)" }
+  - { value: 94.4%, caption: "of technical questions answered with every required detail, 17 of 18, using hybrid search (plain vector search: 83.3%)" }
   - { value: "0", caption: "stale or orphaned entries among 110 vectors after replacing, reparsing and deleting documents" }
   - { value: 3 of 3, caption: "interrupted parse, split and embed jobs completed on retry" }
   - { value: "222", caption: backend tests passing }

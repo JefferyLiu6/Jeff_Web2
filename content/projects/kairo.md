@@ -4,14 +4,14 @@ area: AI agents
 year: "2026"
 date: 2026-11
 summary: An AI assistant for tasks and calendars that asks before it changes anything.
-result: 97% of turns ended with the right data stored in the latest recorded run (96% in the run before), on 127 un-coached messages from simulated users.
+result: 97% of test requests were handled correctly, judged by what was actually saved, in the latest run of 127 un-coached messages from simulated users (96% in the run before).
 code: https://github.com/JefferyLiu6/Kairo
 
 featured: 1
 detail: A language model can only propose one typed action. Separate code checks it against what you actually wrote, decides whether a person must approve it, and builds the reply from what was stored, so each part can be tested on its own.
 stat:
   value: 97%
-  caption: of turns stored the right result in the latest run, on 127 un-coached messages from 14 simulated users (96% in the run before)
+  caption: of test requests handled correctly, judged by what Kairo actually saved. 127 un-coached messages from 14 simulated users, latest run (96% the run before).
 steps:
   - You ask in plain language.
   - A model proposes one typed action; code checks it against your words and decides whether you need to approve it.
@@ -25,7 +25,7 @@ meta:
   - { label: Built with, value: "Python, LangGraph, LangChain, FastAPI, SQLite, React, TypeScript, Docker, with Claude or GPT models (configurable)" }
   - { label: Status, value: "Portfolio demo on Vercel and an Oracle Cloud VM, not a production service" }
 stats:
-  - { value: 97%, caption: "turns right on 127 un-coached messages in the latest blind-eval run (96% the run before)" }
+  - { value: 97%, caption: "of test requests handled correctly, judged by what was saved (latest run; 96% the run before)" }
   - { value: "0", caption: "wrong results reported as done, in those two runs" }
   - { value: 252 of 252, caption: "offline cases across 11 suites, for the earlier workflow" }
   - { value: "1,555", caption: tests passing }
